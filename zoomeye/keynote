@@ -1,0 +1,15 @@
+获取JWT
+```bash
+➜  ~ curl -XPOST https://api.zoomeye.org/user/login -d '{"username": "623257096@qq.com", "password": "cS10241024" }'
+{"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZGVudGl0eSI6IjYyMzI1NzA5NkBxcS5jb20iLCJpYXQiOjE1MzA4ODEyNjUsIm5iZiI6MTUzMDg4MTI2NSwiZXhwIjoxNTMwOTI0NDY1fQ.cr3pTpYg_DxPXjR2gAki0MYgCKsjODmlj-j9ytNRezs"}%  
+
+```
+
+测试账号状态
+
+```bash
+ curl -X GET -i https://api.zoomeye.org/resources-info \
+     -H "Authorization: JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.                         eyJpZGVudGl0eSI6IjYyMzI1NzA5NkBxcS5jb20iLCJpYXQiOjE1MzA4ODEyNjUsIm5iZiI6MTUzMDg4MTI2NSwi ZXhwIjoxNTMwOTI0NDY1fQ.cr3pTpYg_DxPXjR2gAki0MYgCKsjODmlj-j9ytNRezs"
+
+
+```
