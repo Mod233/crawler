@@ -6,6 +6,7 @@ user = '623257096@qq.com'
 pwd = 'cS10241024'
 
 
+# query: app:exim os:ubuntu
 def get_jwt():
     login_info = {'username': user, 'password': pwd}  # dictionary
     try:
@@ -67,12 +68,17 @@ def get_info(jwt):
 
 def output_data(msg):
     result = list()
+    f = open('msg.txt', 'wa')
     if mode == "host":
         for line in msg["matches"]:
-            result.append(line["ip"] + ":" + str(line["portinfo"]["port"]) + "\n")
+            # print str(line)
+            f.writelines(str(line) + "\n")
+            result.append(line["ip"] + ":" + str(line["portinfo"]["port"]) + ":" + str(line["portinfo"]["app"]) + ":" +
+                          str(line["portinfo"]["version"]) + "\n")
     else:
         for line in msg["matches"]:
             result.append(line["site"] + "\n")
+    f.close()
     return result
 
 
@@ -101,8 +107,8 @@ def main():
                 print("[-] begin page %s" % page)
         page += 1
     result = set(result)
-    filename = mode + '-', query, '-', max_page, '.txt'
-    with open('filename', 'w') as f:
+    filename = str(mode) + '-' + str(query) + '-' + str(max_page) + '.txt'
+    with open(str(filename), 'w') as f:
         f.writelines(result)
     f.close
 
